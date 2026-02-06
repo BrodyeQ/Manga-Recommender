@@ -1,32 +1,29 @@
+# Download dataset from HuggingFace
 from datasets import load_dataset
 
 # Load the dataset
 dataset = load_dataset("Madnesss/manga-query", split="train")
 
-# Explore structure
+# Explore dataset structure
 print(dataset.features)
 print(f"Total entries: {len(dataset)}")
 
-# Explore structure
-print(dataset.features)
-print(f"Total entries: {len(dataset)}")
-
-# Look at first entry's key fields
+# Look at first entry in dataset key fields
 print("\n--- First Entry Details ---")
 print(f"Title: {dataset[0]['title']}")
 print(f"Cover URL: {dataset[0]['cover']}")
 print(f"Tags: {dataset[0]['tags']}")
 print(f"Description: {dataset[0]['description'][:100]}...") 
 
-# Look at a few more entries to see variety of tags
+# Look at other entries to see variety of tags
 print("\n--- Looking at first 5 entries' tags ---")
 for i in range(5):
     print(f"{i+1}. {dataset[i]['title']}: {dataset[i]['tags']}")
 
-# Find entries with MULTIPLE tags (all must be present)
+# Find entries with MULTIPLE SPECIFIED tags (all must be present)
 print("\n--- Finding Entries With Multiple Tags ---")
 
-required_tags = ["Action", "Adventure", "Mystery"]  # Start with just 2
+required_tags = ["Action", "Adventure", "Mystery"] 
 
 count = 0
 for entry in dataset:
@@ -36,7 +33,7 @@ for entry in dataset:
 
 print(f"Found {count} manga with ALL tags: {required_tags}")
 
-
+# Randomly pick from 
 import random
 
 # Filter to entries with all required tags
